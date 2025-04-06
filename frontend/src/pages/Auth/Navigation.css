@@ -1,12 +1,20 @@
 #navigation-container {
-    width: 4%;
-    transition: width 0.3s ease-in-out;
-    overflow: hidden; /* Hide overflowing content during transition */
-  }
-  
-  #navigation-container:hover {
-    width: 15%;
-  }
+  width: 4%;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+  background-color: #000; 
+  color: #fff;            /* Set text to white */
+}
+
+#navigation-container a {
+  color: #fff;            /* Ensure all links are white */
+  text-decoration: none;
+}
+
+#navigation-container a:hover {
+  color: #ccc;            /* Slightly lighter on hover */
+}
+
   
   /* Initially hide nav-item-name */
   .nav-item-name {

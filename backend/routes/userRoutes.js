@@ -4,6 +4,8 @@ import { authenticate,authorizeAdmin } from '../middlewares/auth.middleware.js';
 const router = express.Router();
 
 router.route('/').post(createUser).get(authenticate,authorizeAdmin,getAllUser);
+
+// http://localhost:5000/api/users/auth
 router.post('/auth', loginUser);
 router.post('/logout', logOutCurrentUser);
 router.route('/profile').get(authenticate,getCurrentUserProfile).put(authenticate,updateUserProfile)
