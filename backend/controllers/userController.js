@@ -35,23 +35,31 @@ const createUser = asyncHandler(async (req, res) => {
 });
 const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+  
+    console.log(email);
+    console.log(password);
+  
     const existingUser = await User.findOne({ email });
-    if(existingUser) {
-        const isPasswordValid = await bcrypt.compare(password,existingUser.password); 
-        if(isPasswordValid) {
-            createToken(res, existingUser._id);
-            res.status(200).json({
-                _id: existingUser._id,
-                username: existingUser.username,
-                email: existingUser.email,
-                isAdmin: existingUser.isAdmin,
-            });
-        } else {
-            res.status(400);
-            throw new Error("Invalid password");
-        }
+  
+    if (existingUser) {
+      const isPasswordValid = await bcrypt.compare(
+        password,
+        existingUser.password
+      );
+  
+      if (isPasswordValid) {
+        createToken(res, existingUser._id);
+  
+        res.status(201).json({
+          _id: existingUser._id,
+          username: existingUser.username,
+          email: existingUser.email,
+          isAdmin: existingUser.isAdmin,
+        });
+        return;
+      }
     }
-});   
+  });
 
 const logOutCurrentUser = asyncHandler(async (req, res) => {
     res.cookie("jwt", "", {
