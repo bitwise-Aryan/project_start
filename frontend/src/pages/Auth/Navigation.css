@@ -1,44 +1,76 @@
+/* Container default: narrow sidebar */
 #navigation-container {
   width: 4%;
-  transition: width 0.3s ease-in-out;
   overflow: hidden;
-  background-color: #000; 
-  color: #fff;            /* Set text to white */
+  background-color: #000;
+  color: #fff;
+  transition: width 0.3s ease-in-out;
 }
 
+/* Expand on hover */
+#navigation-container:hover {
+  width: 15%;
+}
+
+/* Link styles */
 #navigation-container a {
-  color: #fff;            /* Ensure all links are white */
+  color: #fff;
   text-decoration: none;
+  white-space: nowrap; /* Prevent text from wrapping */
+  align-items: center;
 }
 
+/* Hover effect for links */
 #navigation-container a:hover {
-  color: #ccc;            /* Slightly lighter on hover */
+  color: #ccc;
 }
 
-  
-  /* Initially hide nav-item-name */
-  .nav-item-name {
-    display: none;
-    transition: opacity 0.2s ease-in-out; /* Add opacity transition */
-  }
-  
-  #navigation-container:hover .nav-item-name {
-    display: block;
-    opacity: 1;
-  }
-  
-  .search-input {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out; /* Add opacity transition */
-  }
-  
-  #navigation-container:hover .search-input {
-    display: block;
-    opacity: 1;
-  }
-  
-  #navigation-container:hover .search-icon {
-    display: none;
-    transition: opacity 0.2s ease-in-out; /* Add opacity transition */
-  }
+/* Nav item label: hidden by default */
+.nav-item-name {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  padding-left: 0.5rem; /* Space between icon and label */
+}
+
+/* Reveal labels on hover */
+#navigation-container:hover .nav-item-name {
+  display: inline;
+  opacity: 1;
+}
+
+/* Search input animation (if any) */
+.search-input {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#navigation-container:hover .search-input {
+  opacity: 1;
+  visibility: visible;
+}
+
+#navigation-container:hover .search-icon {
+  display: none;
+}
+
+/* Smooth icon scaling on hover */
+#navigation-container svg {
+  transition: transform 0.2s ease;
+}
+
+#navigation-container a:hover svg {
+  transform: scale(1.1);
+}
+
+/* Optional dropdown styling for username dropdown */
+.dropdown-menu {
+  position: absolute;
+  background: white;
+  color: black;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
