@@ -76,9 +76,9 @@ const Navigation = () => {
         </Link>
       </div>
 
-      {userInfo ? (
-        <div className="relative mt-8">
-          <button
+      
+      <div className="relative mt-8">
+        <button
           onClick={toggleDropdown}
           className="flex items-center text-gray-800 focus:outline-none"
         >
@@ -107,19 +107,12 @@ const Navigation = () => {
           )}
         </button>
 
-          {dropdown && (
-            <ul className="absolute left-0 mt-2 bg-white text-black rounded shadow-lg w-40">
-              <li
-                className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
-                onClick={logoutHandler}
-              >
-                Logout
-              </li>
-              <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">
-                <Link to="/profile">Profile</Link>
-              </li>
-            </ul>
-          )}
+        {dropdown && userInfo && (
+          <ul
+            className={`absolute right-0 mt-2 mr-14 space-y-2 bg-white text-gray-600 ${
+              !userInfo.isAdmin ? "-top-20" : "-top-80"
+            } `}
+          >
           {userInfo.isAdmin && (
               <>
                 <li>
@@ -164,7 +157,22 @@ const Navigation = () => {
                 </li>
               </>
             )}
-            {!userInfo && (
+            <li>
+              <Link to="/profile" className="block px-4 py-2 hover:bg-gray-100">
+                Profile
+              </Link>
+            </li>
+            <li>
+              <button
+                onClick={logoutHandler}
+                className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+              >
+                Logout
+              </button>
+            </li>
+          </ul>
+        )}
+        {!userInfo && (
           <ul>
             <li>
               <Link
@@ -187,28 +195,7 @@ const Navigation = () => {
           </ul>
         )}
         </div>
-      ) : (
-        <ul className="mt-8">
-          <li>
-            <Link
-              to="/login"
-              className="flex items-center transition-transform transform hover:translate-x-2"
-            >
-              <AiOutlineLogin className="mr-2" size={26} />
-              <span className="nav-item-name ml-2">LOGIN</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/register"
-              className="flex items-center transition-transform transform hover:translate-x-2"
-            >
-              <AiOutlineUserAdd size={26} />
-              <span className="nav-item-name ml-2">REGISTER</span>
-            </Link>
-          </li>
-        </ul>
-      )}
+      
     </div>
   );
 };
