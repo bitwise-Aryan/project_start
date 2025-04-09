@@ -63,7 +63,7 @@ const Register = () => {
                             <input
                             type="text"
                             id="name"
-                            className="mt-1 p-2 border rounded w-full"
+                            className="bg-black text-white border border-gray-900 p-4 rounded-sm w-full placeholder-gray-400"
                             placeholder="Enter name"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
@@ -80,7 +80,7 @@ const Register = () => {
                             <input
                             type="email"
                             id="email"
-                            className="mt-1 p-2 border rounded w-full"
+                            className="bg-black text-white border border-gray-900 p-4 rounded-sm w-full placeholder-gray-400"
                             placeholder="Enter email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -97,7 +97,7 @@ const Register = () => {
                             <input
                             type="password"
                             id="password"
-                            className="mt-1 p-2 border rounded w-full"
+                            className="bg-black text-white border border-gray-900 p-4 rounded-sm w-full placeholder-gray-400"
                             placeholder="Enter password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -114,7 +114,7 @@ const Register = () => {
                             <input
                             type="password"
                             id="confirmPassword"
-                            className="mt-1 p-2 border rounded w-full"
+                            className="bg-black text-white border border-gray-900 p-4 rounded-sm w-full placeholder-gray-400"
                             placeholder="Confirm password"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -146,7 +146,7 @@ const Register = () => {
             <img
                 src="https://images.unsplash.com/photo-1576502200916-3808e07386a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80"
                 alt=""
-                className="h-[44rem] w-[47%] xl:block md:hidden sm:hidden rounded-lg"
+                className="h-[44rem] w-[4%] xl:block md:hidden sm:hidden rounded-lg"
             />   
         </section> 
     ); 
