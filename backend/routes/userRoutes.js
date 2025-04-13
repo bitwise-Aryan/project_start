@@ -1,6 +1,6 @@
 import express from 'express';
 import { createUser,loginUser,logOutCurrentUser,getAllUser,getCurrentUserProfile,updateUserProfile,deleteUserById,getUserById,updateUserById} from '../controllers/userController.js';
-import { authenticate,authorizeAdmin } from '../middlewares/auth.middleware.js';
+import { authenticate,authorizeAdmin } from '../middlewares/authMiddleware.js';
 const router = express.Router();
 
 router.route('/').post(createUser).get(authenticate,authorizeAdmin,getAllUser);

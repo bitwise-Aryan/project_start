@@ -1,7 +1,7 @@
 import express from "express";
 const router=express.Router()
 
-import { authenticate,authorizeAdmin } from "../middlewares/auth.middleware.js";
+import { authenticate,authorizeAdmin } from "../middlewares/authMiddleware.js";
 import { createCategory,updateCategory,deleteCategory,listCategory,readCategory} from "../controllers/categoryControllers.js";
 
 router.route('/').post(authenticate,authorizeAdmin,createCategory)

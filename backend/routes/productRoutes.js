@@ -10,25 +10,24 @@ import {
   fetchProducts,
   fetchProductById,
   fetchAllProducts,
-    addProductReview,
-    fetchTopProducts,
+  addProductReview,
+  fetchTopProducts,
   fetchNewProducts,
   filterProducts,
 } from "../controllers/productController.js";
-import { authenticate, authorizeAdmin } from "../middlewares/auth.middleware.js";
+import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
 import checkId from "../middlewares/checkId.js";
 
 router
   .route("/")
-   .get(fetchProducts)
+  .get(fetchProducts)
   .post(authenticate, authorizeAdmin, formidable(), addProduct);
 
+router.route("/allproducts").get(fetchAllProducts);
+router.route("/:id/reviews").post(authenticate, checkId, addProductReview);
 
- router.route("/allproducts").get(fetchAllProducts);
- router.route("/:id/reviews").post(authenticate, checkId, addProductReview);
-
- router.get("/top", fetchTopProducts);
- router.get("/new", fetchNewProducts);
+router.get("/top", fetchTopProducts);
+router.get("/new", fetchNewProducts);
 
 router
   .route("/:id")
@@ -39,4 +38,3 @@ router
 router.route("/filtered-products").post(filterProducts);
 
 export default router;
-
