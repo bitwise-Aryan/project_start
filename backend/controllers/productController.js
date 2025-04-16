@@ -56,12 +56,15 @@ const updateProductDetails = asyncHandler(async (req, res) => {
       { new: true }
     );
 
-    await product.save();
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
 
+    // No need to call product.save() unless you're changing something after update
     res.json(product);
   } catch (error) {
     console.error(error);
-    res.status(400).json(error.message);
+    res.status(400).json({ error: error.message });
   }
 });
 
@@ -147,7 +150,7 @@ const addProductReview = asyncHandler(async (req, res) => {
         throw new Error("Product already reviewed");
       }
 
-      const review = {
+      const review = {//review schema
         name: req.user.username,
         rating: Number(rating),
         comment,
