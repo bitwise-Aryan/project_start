@@ -1,5 +1,5 @@
 import { apiSlice } from "./apiSlice";
-import { USERS_URL } from "../constant";
+import { USERS_URL } from "../constants";
 import Register from "../../pages/Auth/Register";
 
 export const userApiSlice = apiSlice.injectEndpoints({
