@@ -11,7 +11,7 @@ const ProductCard = ({ p }) => {
   const addToCartHandler = (product, qty) => {
     dispatch(addToCart({ ...product, qty }));
     toast.success("Item added successfully", {
-      position: toast.POSITION.TOP_RIGHT,
+      position: "top-right",
       autoClose: 2000,
     });
   };
